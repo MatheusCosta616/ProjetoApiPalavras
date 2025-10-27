@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1-create-palavras-table" author="seu-nome">
+        <createTable tableName="palavras">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="termo" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2-create-etiquetas-table" author="seu-nome">
+        <createTable tableName="etiquetas">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nome" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3-create-palavra-etiqueta-join-table" author="seu-nome">
+        <createTable tableName="palavra_etiqueta">
+            <column name="palavra_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="etiqueta_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey
+                tableName="palavra_etiqueta"
+                columnNames="palavra_id, etiqueta_id"
+                constraintName="pk_palavra_etiqueta"/>
+
+        <addForeignKeyConstraint
+                baseTableName="palavra_etiqueta"
+                baseColumnNames="palavra_id"
+                referencedTableName="palavras"
+                referencedColumnNames="id"
+                constraintName="fk_palavra_etiqueta_palavra"/>
+
+        <addForeignKeyConstraint
+                baseTableName="palavra_etiqueta"
+                baseColumnNames="etiqueta_id"
+                referencedTableName="etiquetas"
+                referencedColumnNames="id"
+                constraintName="fk_palavra_etiqueta_etiqueta"/>
+    </changeSet>
+
+</databaseChangeLog>
