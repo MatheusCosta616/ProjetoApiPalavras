@@ -35,3 +35,8 @@ ____
 #### Links úteis
 - [Guia Mega Prático - Git](https://rogerdudler.github.io/git-guide/index.pt_BR.html)
 - [Curso de Git Para Iniciantes - Youtube](https://www.youtube.com/watch?v=WVLhm1AMeYE&list=PLInBAd9OZCzzHBJjLFZzRl6DgUmOeG3H0)
+
+#### COMANDO BANCO DOCKER
+```bash
+docker run --name postgres-api-palavras -e POSTGRES_DB=api_palavras -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=admin -p 5433:5432 -d postgres:latest
+```
