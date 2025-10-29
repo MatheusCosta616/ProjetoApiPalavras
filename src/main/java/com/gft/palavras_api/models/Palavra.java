@@ -12,8 +12,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "palavras")
-@Data
-@NoArgsConstructor
 public class Palavra {
 
     @Id
@@ -38,4 +36,30 @@ public class Palavra {
     }
 
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTermo() {
+        return termo;
+    }
+
+    public void setTermo(String termo) {
+        this.termo = termo;
+    }
+
+    public Set<Etiqueta> getEtiquetas() {
+        return etiquetas;
+    }
+
+    public void setEtiquetas(Set<Etiqueta> etiquetas) {
+        this.etiquetas = etiquetas;
+    }
+
+    public Palavra() {
+    }
 }
