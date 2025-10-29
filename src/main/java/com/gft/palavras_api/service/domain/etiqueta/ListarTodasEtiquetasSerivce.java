@@ -1,9 +1,9 @@
 package com.gft.palavras_api.service.domain.etiqueta;
 
-import com.gft.palavras_api.models.Etiqueta;
+import com.gft.palavras_api.dto.response.EtiquetaResponseDTO;
 
 import java.util.List;
 
 public interface ListarTodasEtiquetasSerivce {
-   List<Etiqueta> listarTodas();
+   List<EtiquetaResponseDTO> listarTodas();
 }

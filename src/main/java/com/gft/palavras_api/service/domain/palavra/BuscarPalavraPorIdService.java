@@ -1,9 +1,7 @@
 package com.gft.palavras_api.service.domain.palavra;
 
-import com.gft.palavras_api.models.Palavra;
-
-import java.util.Optional;
+import com.gft.palavras_api.dto.response.PalavraResponseDTO;
 
 public interface BuscarPalavraPorIdService {
-    Optional<Palavra> buscarPorId(Long id);
+    PalavraResponseDTO buscarPorId(Long id);
 }

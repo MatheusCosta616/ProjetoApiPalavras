@@ -1,7 +1,7 @@
 package com.gft.palavras_api.service.domain.etiqueta;
 
-import com.gft.palavras_api.models.Palavra;
+import com.gft.palavras_api.dto.response.PalavraResponseDTO;
 
 public interface AdicionarEtiquetaNaPalavraService {
-    Palavra adicionarEtiquetaNaPalavra(Long palavraId, Long etiquetaId);
+    PalavraResponseDTO adicionarEtiquetaNaPalavra(Long palavraId, Long etiquetaId);
 }

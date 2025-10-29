@@ -1,9 +1,7 @@
 package com.gft.palavras_api.service.domain.etiqueta;
 
-import com.gft.palavras_api.models.Etiqueta;
-
-import java.util.Optional;
+import com.gft.palavras_api.dto.response.EtiquetaResponseDTO;
 
 public interface BuscarEtiquetaPorIdService {
-    Optional<Etiqueta> buscarPorId(Long id);
+    EtiquetaResponseDTO buscarPorId(Long id);
 }
