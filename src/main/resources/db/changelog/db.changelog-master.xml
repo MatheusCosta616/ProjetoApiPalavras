@@ -9,5 +9,6 @@
         http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
     <include file="db/changelog/changes/001-create-initial-tables.xml"/>
+    <include file="db/changelog/changes/002-create-user-table.xml"/>
 
 </databaseChangeLog>

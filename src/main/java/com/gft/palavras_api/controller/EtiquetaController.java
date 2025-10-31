@@ -4,9 +4,10 @@ import com.gft.palavras_api.dto.request.EtiquetaRequestDTO;
 import com.gft.palavras_api.dto.response.EtiquetaResponseDTO;
 import com.gft.palavras_api.dto.response.PalavraResponseDTO;
 import com.gft.palavras_api.dto.response.PalavraSimpleResponseDTO;
-import com.gft.palavras_api.service.domain.etiqueta.*;
+import com.gft.palavras_api.usecase.etiqueta.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,42 +40,49 @@ public class EtiquetaController {
         this.listarTodasEtiquetasSerivce = listarTodasEtiquetasSerivce;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<EtiquetaResponseDTO> criarEtiqueta(@RequestBody EtiquetaRequestDTO etiquetaRequestDTO){
         EtiquetaResponseDTO etiqueta = criarEtiquetaService.criarEtiqueta(etiquetaRequestDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(etiqueta);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping
     public ResponseEntity<List<EtiquetaResponseDTO>> listarTodas(){
         List<EtiquetaResponseDTO> etiquetas = listarTodasEtiquetasSerivce.listarTodas();
         return ResponseEntity.ok(etiquetas);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/{id}")
     public ResponseEntity<EtiquetaResponseDTO> buscarPorId(@PathVariable Long id){
         EtiquetaResponseDTO etiqueta = buscarEtiquetaPorIdService.buscarPorId(id);
         return ResponseEntity.ok(etiqueta);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<EtiquetaResponseDTO> atualizar(@PathVariable Long id, @RequestBody EtiquetaRequestDTO etiquetaRequestDTO){
         EtiquetaResponseDTO etiqueta = atualizarEitquetaService.atualizarEtiqueta(id, etiquetaRequestDTO);
         return ResponseEntity.ok(etiqueta);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Long id){
         deletarEtiquetaSerivce.deletarEtiqueta(id);
         return ResponseEntity.noContent().build();
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/{id}/palavras")
     public ResponseEntity<Set<PalavraSimpleResponseDTO>> buscarPalavrasPorEtiqueta(@PathVariable Long id){
         Set<PalavraSimpleResponseDTO> palavras = buscarPalavrasPorEtiquetaService.buscarPalavrasPorEtiqueta(id);
         return ResponseEntity.ok(palavras);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/{etiquetaId}/palavras/{palavraId}")
     public ResponseEntity<PalavraResponseDTO> adicionarEtiquetaNaPalavra(@PathVariable Long etiquetaId, @PathVariable Long palavraId){
         PalavraResponseDTO palavra = adicionarEtiquetaNaPalavraService.adicionarEtiquetaNaPalavra(palavraId, etiquetaId);
