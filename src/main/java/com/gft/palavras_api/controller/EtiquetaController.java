@@ -4,7 +4,7 @@ import com.gft.palavras_api.dto.request.EtiquetaRequestDTO;
 import com.gft.palavras_api.dto.response.EtiquetaResponseDTO;
 import com.gft.palavras_api.dto.response.PalavraResponseDTO;
 import com.gft.palavras_api.dto.response.PalavraSimpleResponseDTO;
-import com.gft.palavras_api.service.domain.etiqueta.*;
+import com.gft.palavras_api.usecase.etiqueta.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;

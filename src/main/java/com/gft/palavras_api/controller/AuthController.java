@@ -2,9 +2,8 @@ package com.gft.palavras_api.controller;
 
 import com.gft.palavras_api.dto.request.LoginRequestDTO;
 import com.gft.palavras_api.dto.request.UserRequestDTO;
-import com.gft.palavras_api.service.domain.user.LoginUserService;
-import com.gft.palavras_api.service.domain.user.RegisterUserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.gft.palavras_api.usecase.user.LoginUserService;
+import com.gft.palavras_api.usecase.user.RegisterUserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
